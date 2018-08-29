@@ -2,13 +2,13 @@
     'use strict';
 
     // Define values for keycodes
-    var VK_ENTER      = 13;
-    var VK_ESC        = 27;
-    var VK_SPACE      = 32;
-    var VK_LEFT       = 37;
-    var VK_UP         = 38;
-    var VK_RIGHT      = 39;
-    var VK_DOWN       = 40;
+    var VK_ENTER = 13;
+    var VK_ESC = 27;
+    var VK_SPACE = 32;
+    var VK_LEFT = 37;
+    var VK_UP = 38;
+    var VK_RIGHT = 39;
+    var VK_DOWN = 40;
 
     var LAST_ID = 0;
 
@@ -74,26 +74,26 @@
 
         handleKeyDown: function(e) {
             switch (e.keyCode) {
-            case VK_DOWN:
-                if (!this.listbox.hidden) {
-                    this.listbox.nextActiveListItem();
-                }
-                break;
-            case VK_UP:
-                if (!this.listbox.hidden) {
-                    this.listbox.previousActiveListItem();
-                }
-                break;
-            case VK_ENTER:
-                var active = this.listbox.activeItem;
-                if (!active)
+                case VK_DOWN:
+                    if (!this.listbox.hidden) {
+                        this.listbox.nextActiveListItem();
+                    }
                     break;
-                this.setSelected(active);
-                this.hideListbox();
-                break;
-            case VK_ESC:
-                this.hideListbox();
-                break;
+                case VK_UP:
+                    if (!this.listbox.hidden) {
+                        this.listbox.previousActiveListItem();
+                    }
+                    break;
+                case VK_ENTER:
+                    var active = this.listbox.activeItem;
+                    if (!active)
+                        break;
+                    this.setSelected(active);
+                    this.hideListbox();
+                    break;
+                case VK_ESC:
+                    this.hideListbox();
+                    break;
             }
 
             return;
@@ -170,6 +170,11 @@
                 this.hide();
             } else {
                 // FIXME: ChromeVox reports the wrong list size and position
+                for (var i = 0; i < this.visibleItems.length; i++) {
+                    var item = this.visibleItems[i];
+                    item.setAttribute('aria-posinset', i + 1);
+                    item.setAttribute('aria-setsize', this.visibleItems.length);
+                }
             }
         },
 
@@ -237,6 +242,7 @@
             newActive.classList.add('active');
 
             // FIXME: need to ensure focus stays on textbox, but report active list option
+            this.textbox.setActiveDescendant(newActive);
         }
     };
 
