@@ -1,33 +1,36 @@
 .masthead {
-  margin: 32px 0;
+    margin: 32px 0;
 }
 
 button:hover,
 button:focus,
 a:hover,
 a:focus {
-  outline: none;
-  color: inherit;
-  text-decoration: none;
+    outline: 2px dotted #8b0078;
+    color: #8b0078;
+    text-decoration: underline;
 }
 
-.nav > li > a {
-  padding: 0 16px;
-  margin: 0 8px;
-}
-
-.nav > li > a:focus {
-  text-decoration: none;
-  background: transparent;
+.nav>li>a {
+    padding: 0 16px;
+    margin: 0 8px;
 }
 
 .jumbotron .mdl-button {
-  background-color: #008b00;
-  color: #FFFFFF;
+    background-color: #008b00;
+    color: #FFFFFF;
 }
 
 .mdl-button.raised {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14),
-              0 3px 1px -2px rgba(0, 0, 0, .2),
-              0 1px 5px 0 rgba(0, 0, 0, .12);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
+}
+
+.mdl-button.raised:focus,
+.jumbotron .mdl-button:focus,
+button:focus,
+.nav>li>a:focus {
+    background: #8b0078;
+    color: #FFFFFF;
+    text-decoration: underline;
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
